@@ -1,116 +1,69 @@
 plugins {
     id 'java'
+    id 'jacoco'
     id 'org.springframework.boot' version '2.4.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-/*
-Изменить структуру каталогов проекта
 sourceSets {
-    main {
+    test {
         java {
-            srcDirs = ['src/java']
+            srcDir 'src'
         }
     }
 }
-*/
 
 // Версия java
 java.toolchain.languageVersion = JavaLanguageVersion.of(8);
-//java.sourceCompatibility = JavaVersion.VERSION_1_8;
 
-// Сборка исполняемого jar файла
 bootJar {
     archiveVersion = ''
     mainClass = 'com.panyukovnn.gradlebasics.GradlebasicsApplication'
 }
 
-// Конфигурация
 configurations {
     compileOnly.extendsFrom annotationProcessor
     testCompileOnly.extendsFrom annotaionProcessor
     testAnnotationProcessor.extendsFrom annotaionProcessor
+    all*.exclude module : 'spring-boot-starter-logging' // fix logging issue
 }
 
-// Объявление переменной
 def springBootVersion = '2.4.3'
-/*
-ext {
-    commonsVersion = 3.11
-}
-*/
 
 // Репозитории
 repositories {
     mavenLocal()
     mavenCentral()
-    maven {
-        url = uri('https://repo.maven.apache.org/maven2/')
-    }
-    /*
-    flatDir {
-        dirs 'lib'
-    }
-    */
 }
 
 dependencies {
-    /*
-    compileOnly - только на этапе компиляции (ломбок, логгер)
-    runtimeOnly - только в рантайме (hibernate, postgres) (эквивалент скоуп 'runtime' в maven)
-    implementation - и в рантайме и на этапе компиляции (эквивалент не заданного скоупа или 'compile' в мавен)
-
-    Устаревшие:
-    compile
-    runtime
-
-    testCompileOnly - на этапе компиляции для тестов (не будет при компиляции проекта)
-    testRuntimeOnly - в рантайме для тестов (не будет в рантайме проекта)
-    testImplementation - в рантайме и на этапе компиляции для тестов (эквивалент 'test' в maven)
-
-    Устаревшие:
-    testCompile
-    testRuntime
-
-    annotaionProcessor - запуск процессоров аннотаций для проекта (кроме тестов)
-    testAnnotaionProcessor - запуск процессора аннотаций для тестов
-
-    api - использовать для создания библиотеки
-    compileOnlyApi - работает не так как зявлено, не использовать
-    */
-
-    implementation "org.springframework.boot:spring-boot-starter-tomcat:$springBootVersion"
     implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    testCompileOnly 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.3.1'
+
     annotationProcessor "org.projectlombok:lombok:1.18.16"
-//    compileOnly 'org.projectlombok:lombok:1.18.16'
-//    testCompileOnly 'org.projectlombok:lombok:1.18.16'
-//    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 
     implementation gradleApi()
+
+}
+
+test {
+    useJUnitPlatform()
 }
 
 // Кодировка
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-
-/*
-Таска - единица работы
-
-Каждый таск является объектом, его можно сконфигурировать, настроить,
-можно от него наследоваться и что-то добавить.
-
-В таску можно положить любой java/groovy код - это и сила и слабость, потому что можно сделать что угодно.
-
-: gradle tasks - посмотреть какие таски сейчас доступны
-: gradle clean - очистить проект
-: gradle build - собрать исполняемый jar файл (аналог 'package' в maven)
-: gradle build -x test - собрать проект и пропустить таску 'test'
-: gradle build --dry-run - запустить таску и показать порядок выполненных тасок
-*/
 
 // Собственные таски
 task helloWorld {
@@ -129,3 +82,10 @@ task greetingTask(type: GreetingTask) {
     greetingName "ESA SPB"
 }
 */
+
+//test {
+//    finalizedBy jacocoTestReport // report is always generated after tests run
+//}
+//jacocoTestReport {
+//    dependsOn test // tests are required to run before generating the report
+//}

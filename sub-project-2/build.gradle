@@ -1,0 +1,20 @@
+dependencies {
+    implementation project(":sub-project-1")
+}
+
+bootJar {
+    archiveVersion = ''
+    mainClass = 'com.panyukovnn.subprojecttwo.SubprojecttwoApplication'
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

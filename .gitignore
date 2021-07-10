@@ -3,7 +3,7 @@
 /build/
 /buildSrc/.gradle/
 /buildSrc/build/
-/sub-project-1/build/
-/sub-project-1/out/
+/starter/build/
+/starter/out/
 /sub-project-2/build/
 /sub-project-2/out/

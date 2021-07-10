@@ -1,45 +1,22 @@
 plugins {
-    id 'java'
     id 'jacoco'
     id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 subprojects {
-    apply plugin: 'java'
     apply plugin: 'jacoco'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 }
 
-sourceSets {
-    test {
-        java {
-            srcDirs = ['src/test/java']
-        }
-    }
-}
-
-bootJar {
-    archiveVersion = ''
-    mainClass = 'com.panyukovnn.gradlebasics.GradlebasicsApplication'
-}
-
-check.enabled = false
-
-dependencies {
-    implementation project(":sub-project-1")
-    testImplementation project(":libs-test")
-
-    implementation gradleApi()
-}
-
-
 allprojects {
-    java.sourceCompatibility(JavaVersion.VERSION_1_8)
+    apply plugin: 'java'
 
     group 'com.panyukovnn'
     version '1.0'
+
+    java.sourceCompatibility(JavaVersion.VERSION_1_8)
 
     configurations {
         compileOnly.extendsFrom annotationProcessor
@@ -52,10 +29,34 @@ allprojects {
         mavenLocal()
         mavenCentral()
     }
+
+    sourceSets {
+        test {
+            java {
+                srcDirs = ['src/test/java']
+            }
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    implementation project(":starter")
+    testImplementation project(":libs-test")
+
+    implementation gradleApi()
+}
+
+check.configure {
+    enabled = false
+}
+
+bootJar {
+    archiveVersion = ''
+    mainClass = 'com.panyukovnn.gradlebasics.GradlebasicsApplication'
 }
 
 tasks.withType(JavaCompile) {

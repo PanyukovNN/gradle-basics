@@ -8,6 +8,6 @@ public class SubprojectoneController {
 
     @GetMapping("/yo")
     public String getSub() {
-        return "Hello, from sub-project-1!";
+        return "Hello, from starter!";
     }
 }

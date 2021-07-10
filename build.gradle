@@ -12,21 +12,7 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
 }
 
-//sourceSets {
-//    test {
-//        java {
-//            srcDirs = ['src/test/java']
-//        }
-//    }
-//}
-
 sourceSets {
-    main {
-        java {
-            srcDirs = ['src']
-        }
-    }
-
     test {
         java {
             srcDirs = ['src/test/java']
@@ -37,6 +23,15 @@ sourceSets {
 bootJar {
     archiveVersion = ''
     mainClass = 'com.panyukovnn.gradlebasics.GradlebasicsApplication'
+}
+
+check.enabled = false
+
+dependencies {
+    implementation project(":sub-project-1")
+    testImplementation project(":libs-test")
+
+    implementation gradleApi()
 }
 
 
@@ -56,20 +51,6 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
-    }
-
-    def springBootVersion = '2.4.3'
-
-    dependencies {
-        implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
-
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-        testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.0")
-        testImplementation('org.springframework.boot:spring-boot-starter-test')
-
-        annotationProcessor "org.projectlombok:lombok:1.18.16"
-
-        implementation gradleApi()
     }
 }
 

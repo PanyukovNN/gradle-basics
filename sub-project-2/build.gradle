@@ -1,5 +1,7 @@
+
 dependencies {
     implementation project(":sub-project-1")
+    testImplementation project(":libs-test")
 }
 
 bootJar {

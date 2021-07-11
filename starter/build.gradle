@@ -1,18 +1,7 @@
 
 apply plugin: 'java-library'
 
-configurations {
-    api.extendsFrom annotationProcessor
-}
-
 dependencies {
     api "org.springframework.boot:spring-boot-starter-web"
     api "org.springframework.boot:spring-boot-starter-actuator"
-
-    annotationProcessor "org.projectlombok:lombok:1.18.16"
-}
-
-// Необходимо для успешного экспорта в соседние модули
-jar {
-    enabled = true
 }

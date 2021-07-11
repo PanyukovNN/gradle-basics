@@ -1,5 +1,6 @@
 
 dependencies {
     implementation project(":starter")
+    implementation project(":sub-project-1")
     testImplementation project(":libs-test")
 }

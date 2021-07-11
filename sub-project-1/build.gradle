@@ -1,0 +1,10 @@
+
+dependencies {
+    implementation project(":starter")
+    annotationProcessor project(":libs-annotation-processors")
+}
+
+// Необходимо для успешного экспорта в соседние модули
+jar {
+    enabled = true
+}

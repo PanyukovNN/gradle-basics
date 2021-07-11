@@ -1,3 +1,7 @@
 rootProject.name = 'gradlebasics'
 
-include 'starter', 'sub-project-2', "libs-test"
+include 'sub-project-1'
+include 'sub-project-2'
+include 'starter'
+include "libs-test"
+include "libs-annotation-processors"

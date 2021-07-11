@@ -1,0 +1,5 @@
+apply plugin: 'java-library'
+
+dependencies {
+    api "org.projectlombok:lombok:1.18.16"
+}

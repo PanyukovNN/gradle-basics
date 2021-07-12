@@ -1,27 +1,16 @@
-## Что такое градл
+## What is the gradle
 
-Градл - автомтаизированная декларативная система сборки проектов.
+Gradle - declarative project build automation tool. 
 
-Используется, например, в таких проектах как Spring, Hibernate.
+Gradle is used in such big projects as Spring and Hibernate. 
 
-Является универсальным инструментом и может быть исопльзован с любым языком программирования.
+Gradle is the universal tool, which can be used not only with java, but with other programming languages.
 
-### Преимущества перед maven
-- Скорость работы - от 2 до 10 раз быстрее, если верить документации
-- Наличие инкрементальных сборок
-- Расширяемость за счет плагинов  
-- Лакониченый синтаксис
-- Возможность влиять на этапы сборки, можно писать собственные таски (легкая кастомизация с помощью groovy)
-- Графовая структура сборки - то есть порядок выполняемых тасок представляет из себя граф
+### Benefits over maven
+- From 2 to 10 times faster, according to the documentation
+- Incremental builds 
+- Scalable
+- Configurable build steps
+- More laconic 
+- Project lifecycle is an acyclic graph
 
-## Источники:
-1) Евгений Борисов — Power of Gradle:
-https://www.youtube.com/watch?v=NZJTYPLb0iE
-
-1) Серия лекций по gradle на канале **Software Development Department**:
-https://www.youtube.com/watch?v=0Uucu-9yHwg
-https://www.youtube.com/watch?v=dGSlqsNOkGA
-https://www.youtube.com/watch?v=kx9_bz5k8OY&t=7s
-
-1) Видеоуроки по gradle на канале **Tom Gregory Tech**:
-https://www.youtube.com/channel/UCxOVEOhPNXcJuyfVLhm_BfQ

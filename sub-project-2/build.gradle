@@ -1,6 +1,9 @@
 
+plugins {
+    id "gradlebasics.libs-common"
+    id "gradlebasics.libs-test"
+}
+
 dependencies {
-    implementation project(":starter")
     implementation project(":sub-project-1")
-    testImplementation project(":libs-test")
 }

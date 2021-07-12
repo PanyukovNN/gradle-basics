@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+configurations {
+    compileOnly.extendsFrom annotationProcessor
+    testCompileOnly.extendsFrom annotaionProcessor
+    testAnnotationProcessor.extendsFrom annotaionProcessor
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:1.18.16"
+}

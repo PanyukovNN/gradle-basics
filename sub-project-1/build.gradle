@@ -1,7 +1,7 @@
 
-dependencies {
-    implementation project(":starter")
-    annotationProcessor project(":libs-annotation-processors")
+plugins {
+    id "gradlebasics.libs-common"
+    id "gradlebasics.libs-annotation-processors"
 }
 
 // Необходимо для успешного экспорта в соседние модули

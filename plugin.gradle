@@ -1,0 +1,29 @@
+class YoutubePluginExtension {
+    def featureName
+}
+
+class YoutubePlugin implements Plugin<Project> {
+    @Override
+    void apply(Project project) {
+
+        // Создаем extension с именем features и базовым классом YoutubePluginExtension
+        def extension = project.extensions.create("features", YoutubePluginExtension)
+
+        project.task("play") {
+            group "YoutubePlugin"
+            doLast {
+                println "Playing something"
+                println extension.featureName
+            }
+        }
+
+        project.task("pause") {
+            group "YoutubePlugin"
+            doLast {
+                println "Paused everything"
+            }
+        }
+    }
+}
+
+apply plugin: YoutubePlugin

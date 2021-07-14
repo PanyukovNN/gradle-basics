@@ -1,7 +1,7 @@
 
 plugins {
-    id "gradlebasics.libs-common"
-    id "gradlebasics.libs-annotation-processors"
+//    id "gradlebasics.libs-common"
+//    id "gradlebasics.libs-annotation-processors"
 }
 
 // Необходимо для успешного экспорта в соседние модули

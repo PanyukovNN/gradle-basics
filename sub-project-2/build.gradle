@@ -1,7 +1,7 @@
 
 plugins {
-    id "gradlebasics.libs-common"
-    id "gradlebasics.libs-test"
+//    id "gradlebasics.libs-common"
+//    id "gradlebasics.libs-test"
 }
 
 dependencies {

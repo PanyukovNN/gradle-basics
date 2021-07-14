@@ -22,4 +22,9 @@ public class SubprojecttwoServiceTest {
         assertEquals(nikolay.getName(), "Nikolay");
         assertEquals(nikolay.getBirthday(), LocalDate.of(2000, 1, 1));
     }
+
+    @Test
+    public void testWithOutput() {
+        System.out.println("Test from sub-project-2");
+    }
 }

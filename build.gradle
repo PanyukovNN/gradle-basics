@@ -5,6 +5,8 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
+apply from: 'ext.gradle'
+
 //allprojects {
 //    group 'com.panyukovnn'
 //    version '1.0-SNAPSHOT'

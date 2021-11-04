@@ -4,6 +4,10 @@ plugins {
 //    id "gradlebasics.libs-annotation-processors"
 }
 
+dependencies {
+//    implementation rootProject.ext.commonLibs.springActuator
+}
+
 // Необходимо для успешного экспорта в соседние модули
 jar {
     enabled = true

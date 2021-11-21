@@ -1,26 +1,25 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.4.3'
+    id 'org.springframework.boot' version '2.5.2'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-/*
-Change project catalog structure
 
-sourceSets {
+// Change project catalog structure
+/*sourceSets {
     main {
         java {
             srcDirs = ['src/java']
         }
     }
-}
-*/
+}*/
+
 
 // Java version
-java.toolchain.languageVersion = JavaLanguageVersion.of(8); // C:\Users\*user*\.gradle\jdks
-//java.sourceCompatibility = JavaVersion.VERSION_1_8;
+//java.toolchain.languageVersion = JavaLanguageVersion.of(8); // C:\Users\*user*\.gradle\jdks
+java.sourceCompatibility = JavaVersion.VERSION_1_8;
 
 // Repositories
 repositories {
@@ -31,7 +30,7 @@ repositories {
     }
     /*
     flatDir {
-        dirs 'lib'
+        dirs 'libs'
     }
     */
 }
@@ -43,11 +42,9 @@ tasks.withType(JavaCompile) {
 
 // Variables
 def springBootVersion = '2.5.2'
-/*
-ext {
-    springBootVersion = '2.5.2'
-}
-*/
+//ext {
+//    springBootVersion = '2.5.2'
+//}
 
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"

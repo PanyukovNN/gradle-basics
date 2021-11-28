@@ -1,7 +1,7 @@
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.5.6'
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
 }
 
 group 'org.example'
@@ -15,9 +15,11 @@ repositories {
 }
 
 dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:2.5.6"
+
     /*
-    compileOnly - compile stage (logger) (equivalent of maven 'provided')
-    runtimeOnly - runtime (hibernate, postgres) (equivalent of runtime maven scope)
+    compileOnly - compile stage (servlet-api) (equivalent of maven 'provided')
+    runtimeOnly - runtime stage (hibernate, postgres) (equivalent of runtime maven scope)
     implementation - accessible both in compile and runtime (equivalent of maven default scope)
 
     Deprecated:
@@ -44,8 +46,6 @@ dependencies {
     api - making dependency available when you writing a library, or importing module
     compileOnlyApi - same as api, not found differences
     */
-
-    implementation "org.springframework.boot:spring-boot-starter-web"
 
     annotationProcessor "org.projectlombok:lombok:1.18.16"
 //    compileOnly 'org.projectlombok:lombok:1.18.16'

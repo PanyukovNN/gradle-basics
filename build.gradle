@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.4.3'
+    id 'org.springframework.boot' version '2.5.6'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
 }
 
 group 'org.example'
@@ -15,7 +16,7 @@ repositories {
 
 dependencies {
     /*
-    compileOnly - compile stage (lombok, logger)
+    compileOnly - compile stage (logger) (equivalent of maven 'provided')
     runtimeOnly - runtime (hibernate, postgres) (equivalent of runtime maven scope)
     implementation - accessible both in compile and runtime (equivalent of maven default scope)
 
@@ -25,7 +26,7 @@ dependencies {
     What will be accessible for tests:
     runtimeOnly - will be accessible in tests runtime
     implementation - accessible in tests implementation (compile + runtime)
-    compileOnly - not accessible from tests (equivalent of maven 'provided')
+    compileOnly - not accessible from tests
 
     Testing:
     testCompileOnly - test compile stage (not in project compile)
@@ -66,11 +67,12 @@ Task - work unit
 Every task in gradle is an object, it can be configured,
 you can inherit your task from it and add something to it by yourself.
 
-In task you can add any java/groovy code - it is a power and a weakness, because you can do anything.
+In task you can add any java/groovy code - it is a power and a weakness,
+                                           because you can do anything.
 
-: gradle tasks - writes avaliable tasks
-: gradle clean - removes build package
-: gradle build - builds project
+: gradle tasks - print avaliable tasks
+: gradle clean - remove build package
+: gradle build - build project
 : gradle build -x test - build project and skip 'test' task
 : gradlew.bat build --dry-run - run build task and show tasks running order
 */
@@ -87,8 +89,13 @@ dependOn check
 build.dependsOn helloWorld
 */
 
-/*
-task greetingTask(type: GreetingTask) {
-    greetingName "ESA SPB"
+//import com.panyukovnn.GreetingTask
+//
+//task greetingTask(type: GreetingTask) {
+//    group "custom group"
+//    greetingName "Viewer"
+//}
+
+configurations {
+    all*.exclude module: 'spring-boot-starter-logging' // fix logging issue
 }
-*/

@@ -17,7 +17,7 @@ public class GreetingTask extends DefaultTask {
     }
 
     @TaskAction
-    public void verify() {
+    public void toGreet() {
         getLogger().quiet("Greetings dear " + greetingName);
     }
 }

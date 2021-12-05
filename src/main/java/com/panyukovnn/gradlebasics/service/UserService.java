@@ -9,6 +9,6 @@ public class UserService {
     public void process() {
         User user = new User("Unknown");
 
-        user.setId("John");
+        user.setLogin("John");
     }
 }

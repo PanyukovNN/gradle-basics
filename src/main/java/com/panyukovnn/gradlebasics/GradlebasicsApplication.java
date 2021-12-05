@@ -8,5 +8,6 @@ public class GradlebasicsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GradlebasicsApplication.class, args);
+        String s = "1";
     }
 }

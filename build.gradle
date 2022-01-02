@@ -7,7 +7,7 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-java.sourceCompatibility = JavaVersion.VERSION_1_8;
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenLocal()
@@ -21,7 +21,7 @@ dependencies {
 
     /*
     compileOnly - compile stage (servlet-api) (equivalent of maven 'provided')
-    runtimeOnly - runtime stage (hibernate, postgres) (equivalent of runtime maven scope)
+    runtimeOnly - runtime stage (hibernate, postgres) (equivalent of 'runtime' maven scope)
     implementation - accessible both in compile and runtime (equivalent of maven default scope)
 
     Deprecated:
@@ -64,7 +64,7 @@ configurations {
 }
 
 /*
-Task - work unit
+Task - a work unit
 
 Every task in gradle is an object, it can be configured,
 you can inherit your task from it and add something to it by yourself.
@@ -81,22 +81,25 @@ In task you can add any java/groovy code - it is a power and a weakness,
 
 // Create task
 task helloViewer {
+    dependsOn check
     doFirst {
         println 'Hello, ' + nameProperty + '!'
     }
 }
 
+test.enabled = false
+
 /*
-dependOn check
+dependsOn check
 build.dependsOn helloWorld
 */
 
-//import com.panyukovnn.GreetingTask
-//
-//task greetingTask(type: GreetingTask) {
-//    group "custom group"
-//    greetingName "Viewer"
-//}
+import com.panyukovnn.GreetingTask
+
+task greetingTask(type: GreetingTask) {
+    group "custom group"
+    greetingName "Viewer"
+}
 
 //configurations {
 //    all*.exclude module: 'spring-boot-starter-logging' // fix logging issue

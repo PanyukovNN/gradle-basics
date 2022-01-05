@@ -1,14 +1,15 @@
-
 plugins {
-//    id "gradlebasics.libs-common"
-//    id "gradlebasics.libs-annotation-processors"
+    id 'java'
+}
+
+group 'com.panyukovnn'
+version '1.0'
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-//    implementation rootProject.ext.commonLibs.springActuator
-}
 
-// Необходимо для успешного экспорта в соседние модули
-jar {
-    enabled = true
+    implementation project(":")
 }

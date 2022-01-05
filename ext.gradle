@@ -1,4 +1,0 @@
-
-ext.commonLibs = [
-        'springActuator' : ['org.springframework.boot:spring-boot-starter-actuator:2.4.3', 'junit:junit:4.8']
-]

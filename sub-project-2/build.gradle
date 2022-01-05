@@ -1,9 +1,0 @@
-
-plugins {
-//    id "gradlebasics.libs-common"
-//    id "gradlebasics.libs-test"
-}
-
-dependencies {
-    implementation project(":sub-project-1")
-}

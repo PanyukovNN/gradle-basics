@@ -1,41 +1,31 @@
 
 plugins {
-    id 'jacoco'
-    id 'org.springframework.boot' version '2.4.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'java-library'
+    id 'org.springframework.boot' version '2.5.7'
 }
 
-apply from: 'ext.gradle'
-
-//allprojects {
-//    group 'com.panyukovnn'
-//    version '1.0-SNAPSHOT'
-//
-//    task('hello').doLast {
-//        println "I'm $project.name"
-//    }
-//}
-
+/*
 subprojects {
-    apply plugin: 'jacoco'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
+    task('hello').doLast {
+        println "I'm $project.name"
+    }
 }
+*/
 
 allprojects {
     apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
 
     group 'com.panyukovnn'
     version '1.0'
 
-//    java.toolchain.languageVersion = JavaLanguageVersion.of(8);
     java.sourceCompatibility(JavaVersion.VERSION_1_8)
 
     configurations {
         compileOnly.extendsFrom annotationProcessor
         testCompileOnly.extendsFrom annotaionProcessor
         testAnnotationProcessor.extendsFrom annotaionProcessor
-        all*.exclude module: 'spring-boot-starter-logging' // fix logging issue
     }
 
     repositories {
@@ -44,24 +34,12 @@ allprojects {
     }
 
     dependencies {
-        implementation "org.springframework.boot:spring-boot-starter-web"
+        implementation "com.google.guava:guava:31.0.1-jre"
 
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-        testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.0")
-        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.0"
+        testImplementation "org.junit.jupiter:junit-jupiter-engine:5.6.0"
 
         annotationProcessor "org.projectlombok:lombok:1.18.16"
-
-        implementation gradleApi()
-    }
-
-    // Necessary to run tests
-    sourceSets {
-        test {
-            java {
-                srcDirs = ['src/test/java']
-            }
-        }
     }
 
     test {
@@ -69,26 +47,6 @@ allprojects {
     }
 }
 
-dependencies {
-    implementation gradleApi()
-}
-
-check.configure {
-    enabled = false
-}
-
-bootJar {
-    archiveVersion = ''
-    mainClass = 'com.panyukovnn.gradlebasics.GradlebasicsApplication'
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-test {
-    finalizedBy jacocoTestReport // report is always generated after tests run
-}
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
 }
